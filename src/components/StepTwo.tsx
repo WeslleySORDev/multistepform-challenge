@@ -1,8 +1,34 @@
 import IconArcade from "/assets/images/icon-arcade.svg";
 import IconAdvanced from "/assets/images/icon-advanced.svg";
 import IconPro from "/assets/images/icon-pro.svg";
+import { useState } from "react";
+
+const plans: { name: string; monthly: number; yearly: number }[] = [
+  {
+    name: "Arcade",
+    monthly: 9,
+    yearly: 90,
+  },
+  {
+    name: "Advanced",
+    monthly: 12,
+    yearly: 120,
+  },
+  {
+    name: "Pro",
+    monthly: 15,
+    yearly: 150,
+  },
+];
 
 export function StepTwo() {
+  const [planType, setPlanType] = useState("monthly");
+  const handleSetPlanType = () => {
+    if (planType === "monthly") {
+      return setPlanType("yearly");
+    }
+    return setPlanType("monthly");
+  };
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -18,7 +44,9 @@ export function StepTwo() {
           <img src={IconArcade} alt="" />
           <div className="flex flex-col gap-1 flex-1 items-start justify-center">
             <span className="text-primary-MarineBlue font-bold">Arcade</span>
-            <span className="text-neutral-CoolGray">$9/mo</span>
+            <span className="text-neutral-CoolGray">
+              ${planType === "monthly" ? plans[0].monthly : plans[0].yearly}/{planType === "monthly" ? "mo" : "yr"}
+            </span>
           </div>
         </button>
         <button className="flex gap-4 items-center p-4 rounded-md border border-neutral-CoolGray">
@@ -36,11 +64,34 @@ export function StepTwo() {
           </div>
         </button>
         <div className="flex items-center justify-center gap-3 bg-neutral-Alabaster py-4">
-          <span>Monthly</span>
+          <span
+            className={`${
+              planType === "monthly"
+                ? "text-primary-MarineBlue"
+                : "text-neutral-CoolGray"
+            }`}
+          >
+            Monthly
+          </span>
           <button className="px-1 w-10 py-1 bg-primary-MarineBlue rounded-full">
-            <div className="h-3 w-3 rounded-full bg-neutral-White"></div>
+            <div
+              onClick={() => {
+                handleSetPlanType();
+              }}
+              className={`${
+                planType === "yearly" && "translate-x-[calc(100%+6px)]"
+              } transition-all duration-500 h-3 w-3 rounded-full bg-neutral-White`}
+            ></div>
           </button>
-          <span>Yearly</span>
+          <span
+            className={`${
+              planType === "yearly"
+                ? "text-primary-MarineBlue"
+                : "text-neutral-CoolGray"
+            }`}
+          >
+            Yearly
+          </span>
         </div>
       </div>
     </>
