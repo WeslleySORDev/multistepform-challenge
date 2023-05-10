@@ -18,7 +18,7 @@ export function StepOne() {
             Name
           </label>
           <input
-            className="text-sm text-neutral-CoolGray border border-neutral-CoolGray rounded-md p-2"
+            className="text-sm placeholder-neutral-CoolGray border border-neutral-CoolGray text-primary-MarineBlue focus:border-primary-MarineBlue font-bold placeholder:font-normal rounded-md p-2"
             id="form-name"
             type="text"
             placeholder="e.g. Stephen King"
@@ -32,7 +32,7 @@ export function StepOne() {
             Email Address
           </label>
           <input
-            className="text-sm text-neutral-CoolGray border border-neutral-CoolGray rounded-md p-2"
+            className="text-sm placeholder-neutral-CoolGray border border-neutral-CoolGray text-primary-MarineBlue focus:border-primary-MarineBlue font-bold placeholder:font-normal rounded-md p-2"
             id="form-email"
             type="text"
             placeholder="e.g. stephenking@lorem.com"
@@ -46,7 +46,7 @@ export function StepOne() {
             Phone Number
           </label>
           <input
-            className="text-sm text-neutral-CoolGray border border-neutral-CoolGray rounded-md p-2"
+            className="text-sm placeholder-neutral-CoolGray border border-neutral-CoolGray text-primary-MarineBlue focus:border-primary-MarineBlue font-bold placeholder:font-normal rounded-md p-2"
             id="form-phone-number"
             type="text"
             placeholder="e.g. +1 234 567 890"

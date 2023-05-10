@@ -1,6 +1,7 @@
 import { useState } from "react";
 import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
 import { StepOne } from "./components/StepOne";
+import { StepTwo } from "./components/StepTwo";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -55,7 +56,15 @@ function App() {
         </div>
       </nav>
       <main className="flex flex-col py-9 px-6 bg-neutral-White mx-4 rounded-md -translate-y-[4.5rem]">
-        {step === 1 ? <StepOne /> : step === 2 ? 2 : step === 3 ? 3 : 4}
+        {step === 1 ? (
+          <StepOne />
+        ) : step === 2 ? (
+          <StepTwo />
+        ) : step === 3 ? (
+          3
+        ) : (
+          4
+        )}
       </main>
       <footer className="fixed bottom-0 w-full flex justify-between p-4 bg-neutral-White mt-auto">
         {step > 1 ? (
