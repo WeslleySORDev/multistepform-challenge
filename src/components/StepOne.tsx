@@ -98,29 +98,36 @@ export function StepOne({
             >
               Phone Number*
             </label>{" "}
-            {missingValue && client.phoneNumber === "" ? (
+            {missingValue && client.phoneNumber === undefined ? (
               <span className="text-sm text-primary-StrawberryRed font-bold">
                 This field is required
               </span>
             ) : null}
           </div>
           <input
-            value={client.phoneNumber}
+            value={client.phoneNumber || ""}
             onChange={(e) => {
-              setClient({
-                ...client,
-                phoneNumber: e.currentTarget.value,
-              });
+              if (e.currentTarget.value) {
+                setClient({
+                  ...client,
+                  phoneNumber: parseInt(e.currentTarget.value),
+                });
+              } else {
+                setClient({
+                  ...client,
+                  phoneNumber: undefined,
+                });
+              }
               if (missingValue) setMissingValue(false);
             }}
             className={`text-sm placeholder-neutral-CoolGray border ${
-              missingValue && client.phoneNumber === ""
+              missingValue && client.phoneNumber === undefined
                 ? "border-primary-StrawberryRed focus:border-primary-StrawberryRed"
                 : "border-neutral-CoolGray focus:border-primary-MarineBlue"
             } text-primary-MarineBlue focus:ring-0 font-bold placeholder:font-normal rounded-md p-2`}
             id="form-phone-number"
-            type="text"
-            placeholder="e.g. +1 234 567 890"
+            type="tel"
+            placeholder="e.g. 123 456 789"
           />
         </div>
       </form>

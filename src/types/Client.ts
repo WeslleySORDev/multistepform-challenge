@@ -1,7 +1,7 @@
 export interface Client {
   name: string;
   email: string;
-  phoneNumber: string;
+  phoneNumber: number | undefined;
   plan: IPlan;
   planType: number;
   addons?: IAddon[];

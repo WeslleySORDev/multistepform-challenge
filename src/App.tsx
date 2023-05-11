@@ -11,7 +11,7 @@ function App() {
   const [client, setClient] = useState<Client>({
     name: "",
     email: "",
-    phoneNumber: "",
+    phoneNumber: undefined,
     plan: {
       name: "Arcade",
       price: 9,
@@ -28,7 +28,7 @@ function App() {
       step === 1 &&
       client.name === "" ||
       client.email === "" ||
-      client.phoneNumber === ""
+      client.phoneNumber === undefined
     ) {
       return setMissingValue(true);
     }
