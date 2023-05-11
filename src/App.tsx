@@ -48,8 +48,8 @@ function App() {
     window.scrollTo(0, 0);
   }, [step, thankYou]);
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
-      <nav className="relative w-full lg:w-auto lg:h-screen">
+    <div className="flex flex-col lg:flex-row min-h-screen lg:p-2">
+      <nav className="relative w-full lg:w-auto lg:h-[calc(100vh-1rem)]">
         {width && width >= 1024 ? (
           <img className="w-fit h-full" src={bgSidebarDesktop} alt="" />
         ) : (
@@ -134,8 +134,8 @@ function App() {
           </div>
         </div>
       </nav>
-      <div className="flex flex-col lg:flex-1 lg:max-h-screen lg:overflow-y-auto">
-        <main className="flex flex-col lg:mx-0 lg:h-full lg:px-20 lg:py-0 lg:pt-16 py-9 px-6 bg-neutral-White mx-4 rounded-md -translate-y-[4.5rem] lg:-translate-y-0">
+      <div className="flex flex-col lg:flex-1 lg:max-h-[calc(100vh-1rem)] lg:overflow-y-auto">
+        <main className="flex flex-col lg:mx-0 lg:h-full lg:px-20 lg:py-0 lg:pt-16 py-9 px-6 bg-neutral-White mx-4 rounded-md lg:rounded-none -translate-y-[4.5rem] lg:-translate-y-0">
           {step === 1 && !thankYou ? (
             <StepOne
               missingValue={missingValue}
