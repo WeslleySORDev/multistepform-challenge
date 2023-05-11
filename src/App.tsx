@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
 import { StepOne } from "./components/StepOne";
 import { StepTwo } from "./components/StepTwo";
 import { StepThree } from "./components/StepThree";
 import { StepFour } from "./components/StepFour";
 import { ThankYou } from "./components/ThankYou";
+import { Client } from "./types/Client";
 
 function App() {
+  const [client, setClient] = useState<Client>({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    plan: {
+      name: "Arcade",
+      price: 9,
+    },
+    planType: 0,
+    addons: [],
+  });
   const [thankYou, setThankYou] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -65,13 +77,13 @@ function App() {
       </nav>
       <main className="flex flex-col py-9 px-6 bg-neutral-White mx-4 rounded-md -translate-y-[4.5rem]">
         {step === 1 && !thankYou ? (
-          <StepOne />
+          <StepOne client={client} setClient={setClient} />
         ) : step === 2 && !thankYou ? (
-          <StepTwo />
+          <StepTwo client={client} setClient={setClient} />
         ) : step === 3 && !thankYou ? (
-          <StepThree />
+          <StepThree client={client} setClient={setClient} />
         ) : step === 4 && !thankYou ? (
-          <StepFour />
+          <StepFour client={client} />
         ) : null}
         {thankYou ? <ThankYou /> : null}
       </main>

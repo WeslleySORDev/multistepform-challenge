@@ -1,4 +1,51 @@
-export function StepThree() {
+import { Client } from "../types/Client";
+
+type StepThreeProps = {
+  client: Client;
+  setClient: React.Dispatch<React.SetStateAction<Client>>;
+};
+
+const addons: {
+  name: string;
+  description: string;
+  prices: number[];
+  htmlId: string;
+}[] = [
+  {
+    name: "Online Service",
+    prices: [1, 10],
+    description: "Access to multiplayer games",
+    htmlId: "online-service-add-on",
+  },
+  {
+    name: "Larger Storage",
+    prices: [2, 20],
+    description: "Extra 1TB of cloud save",
+    htmlId: "larger-storage-add-on",
+  },
+  {
+    name: "Customizable profile",
+    prices: [2, 20],
+    description: "Custom theme on your profile",
+    htmlId: "customizable-profile-add-on",
+  },
+];
+export function StepThree({ client, setClient }: StepThreeProps) {
+  const handleCheckbox = (name: string, prices: number[]) => {
+    if (client.addons?.some((addon) => addon.name === name)) {
+      let addons = client.addons;
+      const getIndex = addons?.findIndex((addon) => addon.name === name);
+      addons.splice(getIndex, 1);
+      setClient({ ...client, addons: addons });
+    } else {
+      let addons = client.addons;
+      addons?.push({
+        name,
+        prices,
+      });
+      setClient({ ...client, addons: addons });
+    }
+  };
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -10,25 +57,61 @@ export function StepThree() {
         </h2>
       </div>
       <div className="flex flex-col gap-3 mt-6">
-        <div className="flex justify-center gap-4 items-center p-4 rounded-md border border-neutral-LightGray">
+        {addons.map((addon) => {
+          return (
+            <div
+              key={addon.name}
+              onClick={() => handleCheckbox(addon.name, [1, 10])}
+              className={`flex justify-center gap-4 items-center p-4 rounded-md ${
+                client.addons?.some((addonRes) => addonRes.name === addon.name)
+                  ? "border-primary-PurplishBlue bg-neutral-Alabaster"
+                  : ""
+              } border cursor-pointer hover:border-primary-PurplishBlue`}
+            >
+              <input
+                readOnly
+                checked={
+                  client.addons?.some(
+                    (addonRes) => addonRes.name === addon.name
+                  )
+                    ? true
+                    : false
+                }
+                className="border-neutral-LightGray rounded-sm focus:ring-0 focus:ring-transparent"
+                type="checkbox"
+                name={addon.htmlId}
+                id={addon.htmlId}
+              />
+              <div className="flex flex-col ">
+                <span className="text-primary-MarineBlue font-bold">
+                  {addon.name}
+                </span>
+                <span className="text-sm text-neutral-CoolGray">
+                  {addon.description}
+                </span>
+              </div>
+              <span className="text-primary-PurplishBlue text-sm ml-auto">
+                ${addon.prices[client.planType]}/
+                {client.planType === 0 ? "mo" : "yr"}
+              </span>
+            </div>
+          );
+        })}
+        {/* <div
+          onClick={() => handleCheckbox("Larger storage", [2, 20])}
+          className={`flex justify-center gap-4 items-center p-4 rounded-md ${
+            client.addons?.some((addon) => addon.name === "Larger storage")
+              ? "border-primary-PurplishBlue bg-neutral-Alabaster"
+              : ""
+          } border cursor-pointer hover:border-primary-PurplishBlue`}
+        >
           <input
-            className="border-neutral-LightGray rounded-sm focus:ring-0 focus:ring-transparent"
-            type="checkbox"
-            name="online-service-add-on"
-            id="online-service-add-on"
-          />
-          <div className="flex flex-col ">
-            <span className="text-primary-MarineBlue font-bold">
-              Online Service
-            </span>
-            <span className="text-sm text-neutral-CoolGray">
-              Access to multiplayer games
-            </span>
-          </div>
-          <span className="text-primary-PurplishBlue text-sm ml-auto">+$1/mo</span>
-        </div>
-        <div className="flex justify-center gap-4 items-center p-4 rounded-md border border-neutral-LightGray">
-          <input
+            readOnly
+            checked={
+              client.addons?.some((addon) => addon.name === "Larger storage")
+                ? true
+                : false
+            }
             className="border-neutral-LightGray rounded-sm focus:ring-0 focus:ring-transparent"
             type="checkbox"
             name="larger-storage-add-on"
@@ -42,10 +125,29 @@ export function StepThree() {
               Extra 1TB of cloud save
             </span>
           </div>
-          <span className="text-primary-PurplishBlue text-sm ml-auto">+$2/mo</span>
+          <span className="text-primary-PurplishBlue text-sm ml-auto">
+            +$2/mo
+          </span>
         </div>
-        <div className="flex justify-center gap-4 items-center p-4 rounded-md bg-neutral-Alabaster border border-primary-PurplishBlue">
+        <div
+          onClick={() => handleCheckbox("Customizable profile", [2, 20])}
+          className={`flex justify-center gap-4 items-center p-4 rounded-md ${
+            client.addons?.some(
+              (addon) => addon.name === "Customizable profile"
+            )
+              ? "border-primary-PurplishBlue bg-neutral-Alabaster"
+              : ""
+          } border cursor-pointer hover:border-primary-PurplishBlue`}
+        >
           <input
+            readOnly
+            checked={
+              client.addons?.some(
+                (addon) => addon.name === "Customizable profile"
+              )
+                ? true
+                : false
+            }
             className="border-neutral-LightGray rounded-sm focus:ring-0 focus:ring-transparent"
             type="checkbox"
             name="customizable-profile-add-on"
@@ -59,8 +161,10 @@ export function StepThree() {
               Custom theme on your profile
             </span>
           </div>
-          <span className="text-primary-PurplishBlue text-sm ml-auto">+$2/mo</span>
-        </div>
+          <span className="text-primary-PurplishBlue text-sm ml-auto">
+            +$2/mo
+          </span>
+        </div> */}
       </div>
     </>
   );

@@ -1,4 +1,11 @@
-export function StepOne() {
+import { Client } from "../types/Client";
+
+type StepOneProps = {
+  client: Client;
+  setClient: React.Dispatch<React.SetStateAction<Client>>;
+};
+
+export function StepOne({ client, setClient }: StepOneProps) {
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -18,6 +25,14 @@ export function StepOne() {
             Name
           </label>
           <input
+            value={client.name}
+            onChange={(e) => {
+              setClient({
+                ...client,
+                name: e.currentTarget.value,
+              });
+            }}
+            required
             className="text-sm placeholder-neutral-CoolGray border border-neutral-CoolGray text-primary-MarineBlue focus:border-primary-MarineBlue font-bold placeholder:font-normal rounded-md p-2"
             id="form-name"
             type="text"
@@ -32,6 +47,14 @@ export function StepOne() {
             Email Address
           </label>
           <input
+            value={client.email}
+            onChange={(e) => {
+              setClient({
+                ...client,
+                email: e.currentTarget.value,
+              });
+            }}
+            required
             className="text-sm placeholder-neutral-CoolGray border border-neutral-CoolGray text-primary-MarineBlue focus:border-primary-MarineBlue font-bold placeholder:font-normal rounded-md p-2"
             id="form-email"
             type="text"
@@ -46,6 +69,14 @@ export function StepOne() {
             Phone Number
           </label>
           <input
+            value={client.phoneNumber}
+            onChange={(e) => {
+              setClient({
+                ...client,
+                phoneNumber: e.currentTarget.value,
+              });
+            }}
+            required
             className="text-sm placeholder-neutral-CoolGray border border-neutral-CoolGray text-primary-MarineBlue focus:border-primary-MarineBlue font-bold placeholder:font-normal rounded-md p-2"
             id="form-phone-number"
             type="text"

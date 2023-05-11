@@ -1,33 +1,34 @@
 import IconArcade from "/assets/images/icon-arcade.svg";
 import IconAdvanced from "/assets/images/icon-advanced.svg";
 import IconPro from "/assets/images/icon-pro.svg";
-import { useState } from "react";
+import { Client } from "../types/Client";
 
-const plans: { name: string; monthly: number; yearly: number }[] = [
+const plans: { name: string; prices: number[] }[] = [
   {
     name: "Arcade",
-    monthly: 9,
-    yearly: 90,
+    prices: [9, 90],
   },
   {
     name: "Advanced",
-    monthly: 12,
-    yearly: 120,
+    prices: [12, 120],
   },
   {
     name: "Pro",
-    monthly: 15,
-    yearly: 150,
+    prices: [15, 150],
   },
 ];
 
-export function StepTwo() {
-  const [planType, setPlanType] = useState("monthly");
+type StepTwoProps = {
+  client: Client;
+  setClient: React.Dispatch<React.SetStateAction<Client>>;
+};
+
+export function StepTwo({ client, setClient }: StepTwoProps) {
   const handleSetPlanType = () => {
-    if (planType === "monthly") {
-      return setPlanType("yearly");
+    if (client.planType === 0) {
+      return setClient({ ...client, planType: 1 });
     }
-    return setPlanType("monthly");
+    return setClient({ ...client, planType: 0 });
   };
   return (
     <>
@@ -40,33 +41,76 @@ export function StepTwo() {
         </h2>
       </div>
       <div className="flex flex-col gap-3 mt-6">
-        <button className="flex gap-4 items-center p-4 rounded-md border border-primary-PurplishBlue bg-neutral-Alabaster">
+        <button
+          onClick={() => {
+            setClient({
+              ...client,
+              plan: { ...plans[0], price: plans[0].prices[client.planType] },
+            });
+          }}
+          className={`flex gap-4 items-center p-4 rounded-md border ${
+            client.plan.name === plans[0].name
+              ? "border-primary-PurplishBlue bg-neutral-Alabaster"
+              : "border-neutral-CoolGray"
+          }`}
+        >
           <img src={IconArcade} alt="" />
           <div className="flex flex-col gap-1 flex-1 items-start justify-center">
             <span className="text-primary-MarineBlue font-bold">Arcade</span>
             <span className="text-neutral-CoolGray">
-              ${planType === "monthly" ? plans[0].monthly : plans[0].yearly}/{planType === "monthly" ? "mo" : "yr"}
+              ${plans[0].prices[client.planType]}/
+              {client.planType === 0 ? "mo" : "yr"}
             </span>
           </div>
         </button>
-        <button className="flex gap-4 items-center p-4 rounded-md border border-neutral-CoolGray">
+        <button
+          onClick={() => {
+            setClient({
+              ...client,
+              plan: { ...plans[1], price: plans[1].prices[client.planType] },
+            });
+          }}
+          className={`flex gap-4 items-center p-4 rounded-md border ${
+            client.plan.name === plans[1].name
+              ? "border-primary-PurplishBlue bg-neutral-Alabaster"
+              : "border-neutral-CoolGray"
+          }`}
+        >
           <img src={IconAdvanced} alt="" />
           <div className="flex flex-col gap-1 flex-1 items-start justify-center">
             <span>Advanced</span>
-            <span>$12/mo</span>
+            <span>
+              ${plans[1].prices[client.planType]}/
+              {client.planType === 0 ? "mo" : "yr"}
+            </span>
           </div>
         </button>
-        <button className="flex gap-4 items-center p-4 rounded-md border border-neutral-CoolGray">
+        <button
+          onClick={() => {
+            setClient({
+              ...client,
+              plan: { ...plans[2], price: plans[2].prices[client.planType] },
+            });
+          }}
+          className={`flex gap-4 items-center p-4 rounded-md border ${
+            client.plan.name === plans[2].name
+              ? "border-primary-PurplishBlue bg-neutral-Alabaster"
+              : "border-neutral-CoolGray"
+          }`}
+        >
           <img src={IconPro} alt="" />
           <div className="flex flex-col gap-1 flex-1 items-start justify-center">
             <span>Pro</span>
-            <span>$15/mo</span>
+            <span>
+              ${plans[2].prices[client.planType]}/
+              {client.planType === 0 ? "mo" : "yr"}
+            </span>
           </div>
         </button>
         <div className="flex items-center justify-center gap-3 bg-neutral-Alabaster py-4">
           <span
             className={`${
-              planType === "monthly"
+              client.planType === 0
                 ? "text-primary-MarineBlue"
                 : "text-neutral-CoolGray"
             }`}
@@ -79,13 +123,13 @@ export function StepTwo() {
                 handleSetPlanType();
               }}
               className={`${
-                planType === "yearly" && "translate-x-[calc(100%+6px)]"
+                client.planType === 1 && "translate-x-[calc(100%+6px)]"
               } transition-all duration-500 h-3 w-3 rounded-full bg-neutral-White`}
             ></div>
           </button>
           <span
             className={`${
-              planType === "yearly"
+              client.planType === 1
                 ? "text-primary-MarineBlue"
                 : "text-neutral-CoolGray"
             }`}

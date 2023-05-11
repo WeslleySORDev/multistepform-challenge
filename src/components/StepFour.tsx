@@ -1,4 +1,9 @@
-export function StepFour() {
+import { Client } from "../types/Client";
+
+type StepFourProps = {
+  client: Client;
+};
+export function StepFour({ client }: StepFourProps) {
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -25,24 +30,20 @@ export function StepFour() {
         </div>
         <div className="content-[] h-[0.5px] w-full bg-neutral-CoolGray"></div>
         <div className="flex items-center">
-          <span className="text-neutral-CoolGray">
-            Online service
-          </span>
+          <span className="text-neutral-CoolGray">Online service</span>
           <span className="text-primary-MarineBlue ml-auto">+$1/mo</span>
         </div>
         <div className="flex items-center">
-          <span className="text-neutral-CoolGray">
-            Larger storage
-          </span>
+          <span className="text-neutral-CoolGray">Larger storage</span>
           <span className="text-primary-MarineBlue ml-auto">+$2/mo</span>
         </div>
       </div>
       <div className="flex items-center px-4 mt-8">
-          <span className="text-neutral-CoolGray">
-            Total (per month)
-          </span>
-          <span className="text-primary-PurplishBlue font-bold ml-auto">+$12/mo</span>
-        </div>
+        <span className="text-neutral-CoolGray">Total (per month)</span>
+        <span className="text-primary-PurplishBlue font-bold ml-auto">
+          +$12/mo
+        </span>
+      </div>
     </>
   );
 }
