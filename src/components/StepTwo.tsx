@@ -42,8 +42,22 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
         >
           <img src={IconArcade} alt="" />
           <div className="flex flex-col gap-1 flex-1 items-start justify-center">
-            <span className="text-primary-MarineBlue font-bold">Arcade</span>
-            <span className="text-neutral-CoolGray">
+            <span
+              className={`${
+                client.plan.name === plans[0].name
+                  ? "text-primary-MarineBlue font-bold"
+                  : ""
+              }`}
+            >
+              Arcade
+            </span>
+            <span
+              className={`${
+                client.plan.name === plans[0].name
+                  ? "text-neutral-CoolGray"
+                  : ""
+              }`}
+            >
               ${plans[0].prices[client.planType]}/
               {client.planType === 0 ? "mo" : "yr"}
             </span>
@@ -64,8 +78,22 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
         >
           <img src={IconAdvanced} alt="" />
           <div className="flex flex-col gap-1 flex-1 items-start justify-center">
-            <span>Advanced</span>
-            <span>
+            <span
+              className={`${
+                client.plan.name === plans[1].name
+                  ? "text-primary-MarineBlue font-bold"
+                  : ""
+              }`}
+            >
+              Advanced
+            </span>
+            <span
+              className={`${
+                client.plan.name === plans[1].name
+                  ? "text-neutral-CoolGray"
+                  : ""
+              }`}
+            >
               ${plans[1].prices[client.planType]}/
               {client.planType === 0 ? "mo" : "yr"}
             </span>
@@ -86,8 +114,22 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
         >
           <img src={IconPro} alt="" />
           <div className="flex flex-col gap-1 flex-1 items-start justify-center">
-            <span>Pro</span>
-            <span>
+            <span
+              className={`${
+                client.plan.name === plans[2].name
+                  ? "text-primary-MarineBlue font-bold"
+                  : ""
+              }`}
+            >
+              Pro
+            </span>
+            <span
+              className={`${
+                client.plan.name === plans[2].name
+                  ? "text-neutral-CoolGray"
+                  : ""
+              }`}
+            >
               ${plans[2].prices[client.planType]}/
               {client.planType === 0 ? "mo" : "yr"}
             </span>
@@ -103,11 +145,13 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
           >
             Monthly
           </span>
-          <button className="px-1 w-10 py-1 bg-primary-MarineBlue rounded-full">
+          <button
+            onClick={() => {
+              handleSetPlanType();
+            }}
+            className="px-1 w-10 py-1 bg-primary-MarineBlue rounded-full"
+          >
             <div
-              onClick={() => {
-                handleSetPlanType();
-              }}
               className={`${
                 client.planType === 1 && "translate-x-[calc(100%+6px)]"
               } transition-all duration-500 h-3 w-3 rounded-full bg-neutral-White`}

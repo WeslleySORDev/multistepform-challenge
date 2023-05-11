@@ -39,7 +39,7 @@ export function StepFour({ client, setStep }: StepFourProps) {
             </span>
             <button
               onClick={() => setStep(2)}
-              className="w-fit text-sm text-neutral-CoolGray underline"
+              className="w-fit text-sm text-neutral-CoolGray underline hover:text-primary-PurplishBlue"
             >
               Change
             </button>
