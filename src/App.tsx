@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
 import { StepOne } from "./components/StepOne";
 import { StepTwo } from "./components/StepTwo";
@@ -105,7 +105,7 @@ function App() {
             className={`${
               step < 4
                 ? "bg-primary-MarineBlue font-bold"
-                : "bg-primary-PurplishBlue"
+                : "bg-primary-PurplishBlue hover:brightness-125"
             } text-neutral-White min-w-[128px] rounded-md p-3 text-sm ml-auto`}
           >
             {step < 4 ? "Next Step" : "Confirm"}
