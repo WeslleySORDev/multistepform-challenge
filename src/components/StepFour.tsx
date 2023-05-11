@@ -8,7 +8,7 @@ export function StepFour({ client }: StepFourProps) {
     <>
       <div className="flex flex-col gap-2">
         <h1 className="text-primary-MarineBlue font-bold text-2xl">
-          Finishing up
+          Finishing up {client.name}
         </h1>
         <h2 className="text-neutral-CoolGray text-lg">
           Double-check everything looks OK before confirming.
