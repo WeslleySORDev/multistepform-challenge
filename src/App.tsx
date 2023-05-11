@@ -2,6 +2,8 @@ import { useState } from "react";
 import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
 import { StepOne } from "./components/StepOne";
 import { StepTwo } from "./components/StepTwo";
+import { StepThree } from "./components/StepThree";
+import { StepFour } from "./components/StepFour";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -13,7 +15,7 @@ function App() {
     if (step > 1) setStep(step - 1);
   };
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <nav className="relative w-full">
         <img className="w-full" src={bgSidebarMobile} alt="" />
         <div className="absolute top-8 flex gap-4 w-full items-center justify-center mx-auto">
@@ -61,12 +63,12 @@ function App() {
         ) : step === 2 ? (
           <StepTwo />
         ) : step === 3 ? (
-          3
+          <StepThree />
         ) : (
-          4
+          <StepFour />
         )}
       </main>
-      <footer className="fixed bottom-0 w-full flex justify-between p-4 bg-neutral-White mt-auto">
+      <footer className="sticky bottom-0 w-full flex justify-between p-4 bg-neutral-White mt-auto">
         {step > 1 ? (
           <button
             onClick={() => handleToPreviousStep()}
