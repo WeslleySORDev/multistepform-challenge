@@ -2,21 +2,7 @@ import IconArcade from "/assets/images/icon-arcade.svg";
 import IconAdvanced from "/assets/images/icon-advanced.svg";
 import IconPro from "/assets/images/icon-pro.svg";
 import { Client } from "../types/Client";
-
-const plans: { name: string; prices: number[] }[] = [
-  {
-    name: "Arcade",
-    prices: [9, 90],
-  },
-  {
-    name: "Advanced",
-    prices: [12, 120],
-  },
-  {
-    name: "Pro",
-    prices: [15, 150],
-  },
-];
+import { plans } from "../variables/Plan";
 
 type StepTwoProps = {
   client: Client;

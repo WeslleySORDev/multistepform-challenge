@@ -1,35 +1,11 @@
 import { Client } from "../types/Client";
+import { addons } from "../variables/Addon";
 
 type StepThreeProps = {
   client: Client;
   setClient: React.Dispatch<React.SetStateAction<Client>>;
 };
 
-const addons: {
-  name: string;
-  description: string;
-  prices: number[];
-  htmlId: string;
-}[] = [
-  {
-    name: "Online Service",
-    prices: [1, 10],
-    description: "Access to multiplayer games",
-    htmlId: "online-service-add-on",
-  },
-  {
-    name: "Larger Storage",
-    prices: [2, 20],
-    description: "Extra 1TB of cloud save",
-    htmlId: "larger-storage-add-on",
-  },
-  {
-    name: "Customizable profile",
-    prices: [2, 20],
-    description: "Custom theme on your profile",
-    htmlId: "customizable-profile-add-on",
-  },
-];
 export function StepThree({ client, setClient }: StepThreeProps) {
   const handleCheckbox = (name: string, prices: number[]) => {
     if (client.addons?.some((addon) => addon.name === name)) {
@@ -61,7 +37,7 @@ export function StepThree({ client, setClient }: StepThreeProps) {
           return (
             <div
               key={addon.name}
-              onClick={() => handleCheckbox(addon.name, [1, 10])}
+              onClick={() => handleCheckbox(addon.name, addon.prices)}
               className={`flex justify-center gap-4 items-center p-4 rounded-md ${
                 client.addons?.some((addonRes) => addonRes.name === addon.name)
                   ? "border-primary-PurplishBlue bg-neutral-Alabaster"
