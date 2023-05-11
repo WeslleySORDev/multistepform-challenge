@@ -25,24 +25,24 @@ export function StepThree({ client, setClient }: StepThreeProps) {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1 className="text-primary-MarineBlue font-bold text-2xl">
+        <h1 className="text-2xl font-bold text-primary-MarineBlue">
           Pick add-ons
         </h1>
-        <h2 className="text-neutral-CoolGray text-lg">
+        <h2 className="text-lg text-neutral-CoolGray">
           Add-ons help enhance your gaming experience.
         </h2>
       </div>
-      <div className="flex flex-col gap-3 mt-6">
+      <div className="mt-6 flex flex-col gap-3">
         {addons.map((addon) => {
           return (
             <div
               key={addon.name}
               onClick={() => handleCheckbox(addon.name, addon.prices)}
-              className={`flex justify-center gap-4 items-center p-4 rounded-md ${
+              className={`flex items-center justify-center gap-4 rounded-md p-4 ${
                 client.addons?.some((addonRes) => addonRes.name === addon.name)
                   ? "border-primary-PurplishBlue bg-neutral-Alabaster"
                   : ""
-              } border cursor-pointer lg:hover:border-primary-PurplishBlue`}
+              } cursor-pointer border lg:hover:border-primary-PurplishBlue`}
             >
               <input
                 readOnly
@@ -53,20 +53,20 @@ export function StepThree({ client, setClient }: StepThreeProps) {
                     ? true
                     : false
                 }
-                className="border-neutral-LightGray rounded-sm focus:ring-0 focus:ring-transparent"
+                className="rounded-sm border-neutral-LightGray focus:ring-0 focus:ring-transparent"
                 type="checkbox"
                 name={addon.htmlId}
                 id={addon.htmlId}
               />
               <div className="flex flex-col ">
-                <span className="text-primary-MarineBlue font-bold">
+                <span className="font-bold text-primary-MarineBlue">
                   {addon.name}
                 </span>
                 <span className="text-sm text-neutral-CoolGray">
                   {addon.description}
                 </span>
               </div>
-              <span className="text-primary-PurplishBlue text-sm ml-auto">
+              <span className="ml-auto text-sm text-primary-PurplishBlue">
                 ${addon.prices[client.planType]}/
                 {client.planType === 0 ? "mo" : "yr"}
               </span>

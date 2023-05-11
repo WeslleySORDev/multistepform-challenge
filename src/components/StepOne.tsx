@@ -16,14 +16,14 @@ export function StepOne({
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1 className="text-primary-MarineBlue font-bold text-2xl">
+        <h1 className="text-2xl font-bold text-primary-MarineBlue">
           Personal Info
         </h1>
-        <h2 className="text-neutral-CoolGray text-lg">
+        <h2 className="text-lg text-neutral-CoolGray">
           Please provide your name, email, address, and phone number.
         </h2>
       </div>
-      <form className="flex flex-col gap-3 mt-4" action="submit">
+      <form className="mt-4 flex flex-col gap-3" action="submit">
         <div className="flex flex-col">
           <div className="flex justify-between">
             <label
@@ -33,7 +33,7 @@ export function StepOne({
               Name*
             </label>
             {missingValue && client.name === "" ? (
-              <span className="text-sm text-primary-StrawberryRed font-bold">
+              <span className="text-sm font-bold text-primary-StrawberryRed">
                 This field is required
               </span>
             ) : null}
@@ -47,11 +47,11 @@ export function StepOne({
               });
               if (missingValue) setMissingValue(false);
             }}
-            className={`text-sm placeholder-neutral-CoolGray border ${
+            className={`border text-sm placeholder-neutral-CoolGray ${
               missingValue && client.name === ""
                 ? "border-primary-StrawberryRed focus:border-primary-StrawberryRed"
                 : "border-neutral-CoolGray focus:border-primary-MarineBlue"
-            } text-primary-MarineBlue focus:ring-0 font-bold placeholder:font-normal rounded-md p-2`}
+            } rounded-md p-2 font-bold text-primary-MarineBlue placeholder:font-normal focus:ring-0`}
             id="form-name"
             type="text"
             placeholder="e.g. Stephen King"
@@ -66,7 +66,7 @@ export function StepOne({
               Email Address*
             </label>
             {missingValue && client.email === "" ? (
-              <span className="text-sm text-primary-StrawberryRed font-bold">
+              <span className="text-sm font-bold text-primary-StrawberryRed">
                 This field is required
               </span>
             ) : null}
@@ -80,11 +80,11 @@ export function StepOne({
               });
               if (missingValue) setMissingValue(false);
             }}
-            className={`text-sm placeholder-neutral-CoolGray border ${
+            className={`border text-sm placeholder-neutral-CoolGray ${
               missingValue && client.email === ""
                 ? "border-primary-StrawberryRed focus:border-primary-StrawberryRed"
                 : "border-neutral-CoolGray focus:border-primary-MarineBlue"
-            } text-primary-MarineBlue font-bold focus:ring-0 placeholder:font-normal rounded-md p-2`}
+            } rounded-md p-2 font-bold text-primary-MarineBlue placeholder:font-normal focus:ring-0`}
             id="form-email"
             type="text"
             placeholder="e.g. stephenking@lorem.com"
@@ -99,7 +99,7 @@ export function StepOne({
               Phone Number*
             </label>{" "}
             {missingValue && client.phoneNumber === undefined ? (
-              <span className="text-sm text-primary-StrawberryRed font-bold">
+              <span className="text-sm font-bold text-primary-StrawberryRed">
                 This field is required
               </span>
             ) : null}
@@ -120,11 +120,11 @@ export function StepOne({
               }
               if (missingValue) setMissingValue(false);
             }}
-            className={`text-sm placeholder-neutral-CoolGray border ${
+            className={`border text-sm placeholder-neutral-CoolGray ${
               missingValue && client.phoneNumber === undefined
                 ? "border-primary-StrawberryRed focus:border-primary-StrawberryRed"
                 : "border-neutral-CoolGray focus:border-primary-MarineBlue"
-            } text-primary-MarineBlue focus:ring-0 font-bold placeholder:font-normal rounded-md p-2`}
+            } rounded-md p-2 font-bold text-primary-MarineBlue placeholder:font-normal focus:ring-0`}
             id="form-phone-number"
             type="tel"
             placeholder="e.g. 123 456 789"

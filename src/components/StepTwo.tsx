@@ -19,14 +19,14 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1 className="text-primary-MarineBlue font-bold text-2xl">
+        <h1 className="text-2xl font-bold text-primary-MarineBlue">
           Select your plan
         </h1>
-        <h2 className="text-neutral-CoolGray text-lg">
+        <h2 className="text-lg text-neutral-CoolGray">
           You have the option of monthly or yearly billing.
         </h2>
       </div>
-      <div className="flex flex-col gap-3 mt-6">
+      <div className="mt-6 flex flex-col gap-3">
         <button
           onClick={() => {
             setClient({
@@ -34,18 +34,18 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
               plan: { ...plans[0], price: plans[0].prices[client.planType] },
             });
           }}
-          className={`flex gap-4 items-center p-4 rounded-md border ${
+          className={`flex items-center gap-4 rounded-md border p-4 ${
             client.plan.name === plans[0].name
               ? "border-primary-PurplishBlue bg-neutral-Alabaster"
               : "border-neutral-CoolGray"
           }`}
         >
           <img src={IconArcade} alt="" />
-          <div className="flex flex-col gap-1 flex-1 items-start justify-center">
+          <div className="flex flex-1 flex-col items-start justify-center gap-1">
             <span
               className={`${
                 client.plan.name === plans[0].name
-                  ? "text-primary-MarineBlue font-bold"
+                  ? "font-bold text-primary-MarineBlue"
                   : ""
               }`}
             >
@@ -70,18 +70,18 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
               plan: { ...plans[1], price: plans[1].prices[client.planType] },
             });
           }}
-          className={`flex gap-4 items-center p-4 rounded-md border ${
+          className={`flex items-center gap-4 rounded-md border p-4 ${
             client.plan.name === plans[1].name
               ? "border-primary-PurplishBlue bg-neutral-Alabaster"
               : "border-neutral-CoolGray"
           }`}
         >
           <img src={IconAdvanced} alt="" />
-          <div className="flex flex-col gap-1 flex-1 items-start justify-center">
+          <div className="flex flex-1 flex-col items-start justify-center gap-1">
             <span
               className={`${
                 client.plan.name === plans[1].name
-                  ? "text-primary-MarineBlue font-bold"
+                  ? "font-bold text-primary-MarineBlue"
                   : ""
               }`}
             >
@@ -106,18 +106,18 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
               plan: { ...plans[2], price: plans[2].prices[client.planType] },
             });
           }}
-          className={`flex gap-4 items-center p-4 rounded-md border ${
+          className={`flex items-center gap-4 rounded-md border p-4 ${
             client.plan.name === plans[2].name
               ? "border-primary-PurplishBlue bg-neutral-Alabaster"
               : "border-neutral-CoolGray"
           }`}
         >
           <img src={IconPro} alt="" />
-          <div className="flex flex-col gap-1 flex-1 items-start justify-center">
+          <div className="flex flex-1 flex-col items-start justify-center gap-1">
             <span
               className={`${
                 client.plan.name === plans[2].name
-                  ? "text-primary-MarineBlue font-bold"
+                  ? "font-bold text-primary-MarineBlue"
                   : ""
               }`}
             >
@@ -149,12 +149,12 @@ export function StepTwo({ client, setClient }: StepTwoProps) {
             onClick={() => {
               handleSetPlanType();
             }}
-            className="px-1 w-10 py-1 bg-primary-MarineBlue rounded-full"
+            className="w-10 rounded-full bg-primary-MarineBlue px-1 py-1"
           >
             <div
               className={`${
                 client.planType === 1 && "translate-x-[calc(100%+6px)]"
-              } transition-all duration-500 h-3 w-3 rounded-full bg-neutral-White`}
+              } h-3 w-3 rounded-full bg-neutral-White transition-all duration-500`}
             ></div>
           </button>
           <span

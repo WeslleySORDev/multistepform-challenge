@@ -23,17 +23,17 @@ export function StepFour({ client, setStep }: StepFourProps) {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1 className="text-primary-MarineBlue font-bold text-2xl">
+        <h1 className="text-2xl font-bold text-primary-MarineBlue">
           Finishing up
         </h1>
-        <h2 className="text-neutral-CoolGray text-lg">
+        <h2 className="text-lg text-neutral-CoolGray">
           Double-check everything looks OK before confirming.
         </h2>
       </div>
-      <div className="flex flex-col gap-2 mt-6 bg-neutral-Magnolia px-4 py-5">
+      <div className="mt-6 flex flex-col gap-2 bg-neutral-Magnolia px-4 py-5">
         <div className="flex items-center">
           <div className="flex flex-col">
-            <span className="text-primary-MarineBlue font-bold">
+            <span className="font-bold text-primary-MarineBlue">
               {client.plan.name} ({client.planType === 0 ? "Monthly" : "Yearly"}
               )
             </span>
@@ -44,7 +44,7 @@ export function StepFour({ client, setStep }: StepFourProps) {
               Change
             </button>
           </div>
-          <span className="text-primary-MarineBlue font-bold ml-auto">
+          <span className="ml-auto font-bold text-primary-MarineBlue">
             $
             {
               plans[plans.findIndex((plan) => plan.name === client.plan.name)]
@@ -55,13 +55,13 @@ export function StepFour({ client, setStep }: StepFourProps) {
         </div>
         {client.addons && client.addons?.length > 0 ? (
           <>
-            <div className="content-[] h-[0.5px] w-full bg-neutral-CoolGray"></div>
+            <div className="h-[0.5px] w-full bg-neutral-CoolGray content-[]"></div>
             {client.addons.map((addon) => {
               console.log(addon);
               return (
                 <div key={addon.name} className="flex items-center">
                   <span className="text-neutral-CoolGray">{addon.name}</span>
-                  <span className="text-primary-MarineBlue ml-auto">
+                  <span className="ml-auto text-primary-MarineBlue">
                     +${addon.prices[client.planType]}/
                     {client.planType === 0 ? "mo" : "yr"}
                   </span>
@@ -71,11 +71,11 @@ export function StepFour({ client, setStep }: StepFourProps) {
           </>
         ) : null}
       </div>
-      <div className="flex items-center px-4 mt-8">
+      <div className="mt-8 flex items-center px-4">
         <span className="text-neutral-CoolGray">
           Total (per {client.planType === 0 ? "month" : "year"})
         </span>
-        <span className="text-primary-PurplishBlue font-bold ml-auto">
+        <span className="ml-auto font-bold text-primary-PurplishBlue">
           +${totalPrice()}/{client.planType === 0 ? "mo" : "yr"}
         </span>
       </div>

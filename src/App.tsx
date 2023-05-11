@@ -48,94 +48,94 @@ function App() {
     window.scrollTo(0, 0);
   }, [step, thankYou]);
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen lg:p-2">
-      <nav className="relative w-full lg:w-auto lg:h-[calc(100vh-1rem)]">
+    <div className="flex h-full flex-col lg:flex-row lg:p-2">
+      <nav className="relative w-full lg:h-[calc(100vh-1rem)] lg:w-auto">
         {width && width >= 1024 ? (
-          <img className="w-fit h-full" src={bgSidebarDesktop} alt="" />
+          <img className="h-full w-fit" src={bgSidebarDesktop} alt="" />
         ) : (
           <img className="w-full" src={bgSidebarMobile} alt="" />
         )}
-        <div className="absolute justify-center lg:justify-normal top-8 lg:left-8 flex lg:flex-col gap-4 w-full ">
+        <div className="absolute top-8 flex w-full justify-center gap-4 lg:left-8 lg:flex-col lg:justify-normal ">
           <div
-            className={`flex lg:gap-3 items-center lg:justify-normal justify-center select-none lg:w-full`}
+            className={`flex select-none items-center justify-center lg:w-full lg:justify-normal lg:gap-3`}
           >
             <span
-              className={`h-8 w-8 rounded-full justify-center flex items-center ${
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${
                 step === 1
                   ? "bg-primary-LightBlue"
-                  : "text-neutral-Alabaster border border-neutral-Alabaster"
+                  : "border border-neutral-Alabaster text-neutral-Alabaster"
               } font-medium`}
             >
               1
             </span>
             {width && width >= 1024 ? (
               <div className="flex flex-col">
-                <span className="text-neutral-LightGray text-sm">STEP 1</span>
-                <span className="text-neutral-White text-sm">YOUR INFO</span>
+                <span className="text-sm text-neutral-LightGray">STEP 1</span>
+                <span className="text-sm text-neutral-White">YOUR INFO</span>
               </div>
             ) : null}
           </div>
           <div
-            className={`flex lg:gap-3 items-center lg:justify-normal justify-center select-none lg:w-full`}
+            className={`flex select-none items-center justify-center lg:w-full lg:justify-normal lg:gap-3`}
           >
             <span
-              className={`h-8 w-8 rounded-full justify-center flex items-center ${
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${
                 step === 2
                   ? "bg-primary-LightBlue"
-                  : "text-neutral-Alabaster border border-neutral-Alabaster"
+                  : "border border-neutral-Alabaster text-neutral-Alabaster"
               } font-medium`}
             >
               2
             </span>
             {width && width >= 1024 ? (
               <div className="flex flex-col">
-                <span className="text-neutral-LightGray text-sm">STEP 2</span>
-                <span className="text-neutral-White text-sm">SELECT PLAN</span>
+                <span className="text-sm text-neutral-LightGray">STEP 2</span>
+                <span className="text-sm text-neutral-White">SELECT PLAN</span>
               </div>
             ) : null}
           </div>
           <div
-            className={`flex lg:gap-3 items-center lg:justify-normal justify-center select-none lg:w-full`}
+            className={`flex select-none items-center justify-center lg:w-full lg:justify-normal lg:gap-3`}
           >
             <span
-              className={`h-8 w-8 rounded-full justify-center flex items-center ${
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${
                 step === 3
                   ? "bg-primary-LightBlue"
-                  : "text-neutral-Alabaster border border-neutral-Alabaster"
+                  : "border border-neutral-Alabaster text-neutral-Alabaster"
               } font-medium`}
             >
               3
             </span>
             {width && width >= 1024 ? (
               <div className="flex flex-col">
-                <span className="text-neutral-LightGray text-sm">STEP 3</span>
-                <span className="text-neutral-White text-sm">ADD-ONS</span>
+                <span className="text-sm text-neutral-LightGray">STEP 3</span>
+                <span className="text-sm text-neutral-White">ADD-ONS</span>
               </div>
             ) : null}
           </div>
           <div
-            className={`flex lg:gap-3 items-center lg:justify-normal justify-center select-none lg:w-full`}
+            className={`flex select-none items-center justify-center lg:w-full lg:justify-normal lg:gap-3`}
           >
             <span
-              className={`h-8 w-8 rounded-full justify-center flex items-center ${
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${
                 step === 4
                   ? "bg-primary-LightBlue"
-                  : "text-neutral-Alabaster border border-neutral-Alabaster"
+                  : "border border-neutral-Alabaster text-neutral-Alabaster"
               } font-medium`}
             >
               4
             </span>
             {width && width >= 1024 ? (
               <div className="flex flex-col">
-                <span className="text-neutral-LightGray text-sm">STEP 4</span>
-                <span className="text-neutral-White text-sm">SUMMARY</span>
+                <span className="text-sm text-neutral-LightGray">STEP 4</span>
+                <span className="text-sm text-neutral-White">SUMMARY</span>
               </div>
             ) : null}
           </div>
         </div>
       </nav>
-      <div className="flex flex-col lg:flex-1 lg:max-h-[calc(100vh-1rem)] lg:overflow-y-auto">
-        <main className="flex flex-col lg:mx-0 lg:h-full lg:px-20 lg:py-0 lg:pt-16 py-9 px-6 bg-neutral-White mx-4 rounded-md lg:rounded-none -translate-y-[4.5rem] lg:-translate-y-0">
+      <div className="flex flex-col lg:max-h-[calc(100vh-1rem)] lg:flex-1 lg:overflow-y-auto">
+        <main className="mx-4 flex -translate-y-[4.5rem] lg:mb-0 mb-[2.25rem] flex-col rounded-md bg-neutral-White px-6 py-9 lg:mx-0 lg:h-full lg:-translate-y-0 lg:rounded-none lg:px-20 lg:py-0 lg:pt-16">
           {step === 1 && !thankYou ? (
             <StepOne
               missingValue={missingValue}
@@ -153,11 +153,11 @@ function App() {
           {thankYou ? <ThankYou /> : null}
         </main>
         {!thankYou ? (
-          <footer className="sticky bottom-0 w-full lg:items-end lg:px-20 lg:h-full flex justify-between p-4 bg-neutral-White">
+          <footer className="fixed lg:sticky bottom-0 flex w-full justify-between bg-neutral-White p-4 lg:h-full lg:items-end lg:px-20">
             {step > 1 ? (
               <button
                 onClick={() => handleToPreviousStep()}
-                className="lg:h-fit text-sm font-bold text-neutral-CoolGray"
+                className="text-sm font-bold text-neutral-CoolGray lg:h-fit"
               >
                 Go Back
               </button>
@@ -171,7 +171,7 @@ function App() {
                 step < 4
                   ? "bg-primary-MarineBlue font-bold"
                   : "bg-primary-PurplishBlue hover:brightness-125"
-              } text-neutral-White min-w-[128px] rounded-md p-3 text-sm ml-auto`}
+              } ml-auto min-w-[128px] rounded-md p-3 text-sm text-neutral-White`}
             >
               {step < 4 ? "Next Step" : "Confirm"}
             </button>
