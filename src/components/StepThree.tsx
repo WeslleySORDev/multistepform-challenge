@@ -66,7 +66,7 @@ export function StepThree({ client, setClient }: StepThreeProps) {
                 client.addons?.some((addonRes) => addonRes.name === addon.name)
                   ? "border-primary-PurplishBlue bg-neutral-Alabaster"
                   : ""
-              } border cursor-pointer hover:border-primary-PurplishBlue`}
+              } border cursor-pointer lg:hover:border-primary-PurplishBlue`}
             >
               <input
                 readOnly
