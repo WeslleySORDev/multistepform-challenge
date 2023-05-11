@@ -4,8 +4,10 @@ import { StepOne } from "./components/StepOne";
 import { StepTwo } from "./components/StepTwo";
 import { StepThree } from "./components/StepThree";
 import { StepFour } from "./components/StepFour";
+import { ThankYou } from "./components/ThankYou";
 
 function App() {
+  const [thankYou, setThankYou] = useState(false);
   const [step, setStep] = useState(1);
 
   const handleToNextStep = () => {
@@ -13,6 +15,10 @@ function App() {
   };
   const handleToPreviousStep = () => {
     if (step > 1) setStep(step - 1);
+  };
+
+  const handleThankYou = () => {
+    setThankYou(!thankYou);
   };
   return (
     <div className="flex flex-col min-h-screen">
@@ -58,32 +64,42 @@ function App() {
         </div>
       </nav>
       <main className="flex flex-col py-9 px-6 bg-neutral-White mx-4 rounded-md -translate-y-[4.5rem]">
-        {step === 1 ? (
+        {step === 1 && !thankYou ? (
           <StepOne />
-        ) : step === 2 ? (
+        ) : step === 2 && !thankYou ? (
           <StepTwo />
-        ) : step === 3 ? (
+        ) : step === 3 && !thankYou ? (
           <StepThree />
-        ) : (
+        ) : step === 4 && !thankYou ? (
           <StepFour />
-        )}
-      </main>
-      <footer className="sticky bottom-0 w-full flex justify-between p-4 bg-neutral-White mt-auto">
-        {step > 1 ? (
-          <button
-            onClick={() => handleToPreviousStep()}
-            className="text-sm font-bold text-neutral-CoolGray"
-          >
-            Go Back
-          </button>
         ) : null}
-        <button
-          onClick={() => handleToNextStep()}
-          className="bg-primary-MarineBlue text-neutral-White font-bold rounded-md p-3 text-sm ml-auto"
-        >
-          Next Step
-        </button>
-      </footer>
+        {thankYou ? <ThankYou /> : null}
+      </main>
+      {!thankYou ? (
+        <footer className="sticky bottom-0 w-full flex justify-between p-4 bg-neutral-White mt-auto">
+          {step > 1 ? (
+            <button
+              onClick={() => handleToPreviousStep()}
+              className="text-sm font-bold text-neutral-CoolGray"
+            >
+              Go Back
+            </button>
+          ) : null}
+          <button
+            onClick={() => {
+              if (step < 4) return handleToNextStep();
+              handleThankYou();
+            }}
+            className={`${
+              step < 4
+                ? "bg-primary-MarineBlue font-bold"
+                : "bg-primary-PurplishBlue"
+            } text-neutral-White min-w-[128px] rounded-md p-3 text-sm ml-auto`}
+          >
+            {step < 4 ? "Next Step" : "Confirm"}
+          </button>
+        </footer>
+      ) : null}
     </div>
   );
 }
