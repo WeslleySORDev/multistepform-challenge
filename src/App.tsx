@@ -138,7 +138,7 @@ function App() {
           ) : step === 3 && !thankYou ? (
             <StepThree />
           ) : step === 4 && !thankYou ? (
-            <StepFour setStep={setStep} client={client} />
+            <StepFour />
           ) : null}
           {thankYou ? <ThankYou /> : null}
         </main>

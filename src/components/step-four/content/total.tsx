@@ -1,11 +1,9 @@
-import { Client } from "../../../types/Client";
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
 import { plans } from "../../../variables/Plan";
 
-type StepFourContentTotalProps = {
-  client: Client;
-};
-
-export function StepFourContentTotal({ client }: StepFourContentTotalProps) {
+export function StepFourContentTotal() {
+  const { client } = useContext(ClientContext);
   const totalPrice = () => {
     const planPrice =
       plans[plans.findIndex((plan) => plan.name === client.plan.name)].prices[

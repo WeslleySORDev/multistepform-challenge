@@ -1,15 +1,11 @@
-import { Client } from "../../../types/Client";
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
+import StepContext from "../../../context/step";
 import { plans } from "../../../variables/Plan";
 
-type StepFourContentItemsProps = {
-  client: Client;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-};
-
-export function StepFourContentItems({
-  client,
-  setStep,
-}: StepFourContentItemsProps) {
+export function StepFourContentItems() {
+  const { client } = useContext(ClientContext);
+  const { setStep } = useContext(StepContext);
   return (
     <div className="mt-6 flex flex-col gap-2 bg-neutral-Magnolia px-4 py-5">
       <div className="flex items-center">
