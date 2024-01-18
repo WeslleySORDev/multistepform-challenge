@@ -1,12 +1,9 @@
-import { Client } from "../../../types/Client";
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
 import { addons } from "../../../variables/Addon";
 
-type StepThreeAddonsProps = {
-  client: Client;
-  setClient: React.Dispatch<React.SetStateAction<Client>>;
-};
-
-export function StepThreeAddons({ client, setClient }: StepThreeAddonsProps) {
+export function StepThreeAddons() {
+  const { client, setClient } = useContext(ClientContext);
   const handleCheckbox = (name: string, prices: number[]) => {
     if (client.addons?.some((addon) => addon.name === name)) {
       let addons = client.addons;
