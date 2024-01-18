@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
 import bgSidebarDesktop from "/assets/images/bg-sidebar-desktop.svg";
 import { StepOne } from "./components/step-one/index";
@@ -6,25 +6,17 @@ import { StepTwo } from "./components/step-two/index";
 import { StepThree } from "./components/step-three/index";
 import { StepFour } from "./components/step-four/index";
 import { ThankYou } from "./components/thank-you";
-import { Client } from "./types/Client";
 
 import { useWindowSize } from "./hooks/useWindowSize";
+import ClientContext from "./context/client";
+import StepContext from "./context/step";
 
 function App() {
+  const { client, setClient } = useContext(ClientContext);
+  const { step, setStep } = useContext(StepContext);
   const { width } = useWindowSize();
-  const [client, setClient] = useState<Client>({
-    name: "",
-    email: "",
-    phoneNumber: undefined,
-    plan: {
-      name: "Arcade",
-      price: 9,
-    },
-    planType: 0,
-    addons: [],
-  });
+
   const [thankYou, setThankYou] = useState(false);
-  const [step, setStep] = useState(1);
   const [missingValue, setMissingValue] = useState(false);
 
   const handleToNextStep = () => {
