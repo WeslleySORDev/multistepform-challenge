@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
 import bgSidebarDesktop from "/assets/images/bg-sidebar-desktop.svg";
 import { StepOne } from "./components/step-one/index";
-import { StepTwo } from "./components/StepTwo";
+import { StepTwo } from "./components/step-two/index";
 import { StepThree } from "./components/StepThree";
 import { StepFour } from "./components/StepFour";
 import { ThankYou } from "./components/ThankYou";
