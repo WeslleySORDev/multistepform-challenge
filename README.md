@@ -65,6 +65,6 @@ Users should be able to:
 
 # Mudanças
 
-- [ ] Componentizar todas as partes do form para melhor entendimento e facil futura manutenção.
+- [x] Componentizar todas as partes do form para melhor entendimento e facil futura manutenção.
 - [ ] Utilizar react hook form para tornar os formulários mais eficientes e reduz o número de novas renderizações e melhorar
       a questão de criação e validação dos formulários
