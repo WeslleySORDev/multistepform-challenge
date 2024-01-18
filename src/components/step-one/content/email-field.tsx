@@ -1,18 +1,16 @@
-import { Client } from "../../../types/Client";
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
 
 type StepOneContentEmailFieldProps = {
-  client: Client;
   missingValue: boolean;
-  setClient: React.Dispatch<React.SetStateAction<Client>>;
   setMissingValue: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export function StepOneContentEmailField({
-  client,
   missingValue,
-  setClient,
   setMissingValue,
 }: StepOneContentEmailFieldProps) {
+  const { client, setClient } = useContext(ClientContext);
   return (
     <div className="flex flex-col">
       <div className="flex justify-between">
