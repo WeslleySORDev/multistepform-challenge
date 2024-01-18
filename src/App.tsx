@@ -1,19 +1,21 @@
 import { useContext, useEffect, useState } from "react";
-import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
-import bgSidebarDesktop from "/assets/images/bg-sidebar-desktop.svg";
+import { useWindowSize } from "./hooks/useWindowSize";
+import ClientContext from "./context/client";
+import StepContext from "./context/step";
+
 import { StepOne } from "./components/step-one/index";
 import { StepTwo } from "./components/step-two/index";
 import { StepThree } from "./components/step-three/index";
 import { StepFour } from "./components/step-four/index";
 import { ThankYou } from "./components/thank-you";
 
-import { useWindowSize } from "./hooks/useWindowSize";
-import ClientContext from "./context/client";
-import StepContext from "./context/step";
+import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
+import bgSidebarDesktop from "/assets/images/bg-sidebar-desktop.svg";
 
 function App() {
-  const { client, setClient } = useContext(ClientContext);
+  const { client } = useContext(ClientContext);
   const { step, setStep } = useContext(StepContext);
+
   const { width } = useWindowSize();
 
   const [thankYou, setThankYou] = useState(false);
