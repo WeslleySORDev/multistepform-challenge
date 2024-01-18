@@ -18,7 +18,7 @@ export function StepFourContentTotal() {
     return planPrice + addonsPrice;
   };
   return (
-    <div className="mt-8 flex items-center px-4">
+    <div className="flex items-center px-4">
       <span className="text-neutral-CoolGray">
         Total (per {client.planType === 0 ? "month" : "year"})
       </span>

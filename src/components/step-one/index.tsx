@@ -10,9 +10,9 @@ type StepOneProps = {
 
 export function StepOne({ missingValue, setMissingValue }: StepOneProps) {
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <StepOneHeader />
-      <form className="mt-4 flex flex-col gap-3" action="submit">
+      <div className="flex flex-col gap-3">
         <StepOneContentNameField
           missingValue={missingValue}
           setMissingValue={setMissingValue}
@@ -25,7 +25,7 @@ export function StepOne({ missingValue, setMissingValue }: StepOneProps) {
           missingValue={missingValue}
           setMissingValue={setMissingValue}
         />
-      </form>
-    </>
+      </div>
+    </div>
   );
 }

@@ -7,7 +7,7 @@ export function StepFourContentItems() {
   const { client } = useContext(ClientContext);
   const { setStep } = useContext(StepContext);
   return (
-    <div className="mt-6 flex flex-col gap-2 bg-neutral-Magnolia px-4 py-5">
+    <div className="flex flex-col gap-2 bg-neutral-Magnolia px-4 py-5">
       <div className="flex items-center">
         <div className="flex flex-col">
           <span className="font-bold text-primary-MarineBlue">

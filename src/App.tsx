@@ -126,20 +126,22 @@ function App() {
       </nav>
       <div className="flex flex-col lg:max-h-[calc(100vh-1rem)] lg:flex-1 lg:overflow-y-auto">
         <main className="mx-4 mb-[2.25rem] flex -translate-y-[4.5rem] flex-col rounded-md bg-neutral-White px-6 py-9 lg:mx-0 lg:mb-0 lg:h-full lg:-translate-y-0 lg:rounded-none lg:px-20 lg:py-0 lg:pt-16">
-          {step === 1 ? (
-            <StepOne
-              missingValue={missingValue}
-              setMissingValue={setMissingValue}
-            />
-          ) : step === 2 ? (
-            <StepTwo />
-          ) : step === 3 ? (
-            <StepThree />
-          ) : step === 4 ? (
-            <StepFour />
-          ) : (
-            <ThankYou />
-          )}
+          <form action="">
+            {step === 1 ? (
+              <StepOne
+                missingValue={missingValue}
+                setMissingValue={setMissingValue}
+              />
+            ) : step === 2 ? (
+              <StepTwo />
+            ) : step === 3 ? (
+              <StepThree />
+            ) : step === 4 ? (
+              <StepFour />
+            ) : (
+              <ThankYou />
+            )}
+          </form>
         </main>
         {step <= 4 ? (
           <footer className="fixed bottom-0 flex w-full justify-between bg-neutral-White p-4 lg:sticky lg:h-full lg:items-end lg:px-20">

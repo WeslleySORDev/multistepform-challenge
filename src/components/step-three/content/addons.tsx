@@ -20,7 +20,7 @@ export function StepThreeAddons() {
     }
   };
   return (
-    <div className="mt-6 flex flex-col gap-3">
+    <div className="flex flex-col gap-3">
       {addons.map((addon) => {
         return (
           <div

@@ -6,14 +6,14 @@ import { StepTwoContentToggleMonthlyYearly } from "./content/toggle-monthly-year
 
 export function StepTwo() {
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <StepTwoHeader />
-      <div className="mt-6 flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         <StepTwoPlanArcade />
         <StepTwoPlanAdvanced />
         <StepTwoPlanPro />
         <StepTwoContentToggleMonthlyYearly />
       </div>
-    </>
+    </div>
   );
 }
