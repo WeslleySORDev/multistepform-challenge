@@ -62,3 +62,9 @@ Users should be able to:
 - Website - [WeslleySOR](https://wsorportifolio.netlify.app/)
 - Frontend Mentor - [@WeslleySORDev](https://www.frontendmentor.io/profile/WeslleySORDev)
 - Linkedin - [@weslleysordev](https://www.linkedin.com/in/weslleysordev/)
+
+# Mudanças
+
+- [ ] Componentizar todas as partes do form para melhor entendimento e facil futura manutenção.
+- [ ] Utilizar react hook form para tornar os formulários mais eficientes e reduz o número de novas renderizações e melhorar
+      a questão de criação e validação dos formulários
