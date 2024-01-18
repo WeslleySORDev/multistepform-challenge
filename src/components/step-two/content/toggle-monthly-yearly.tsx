@@ -21,6 +21,7 @@ export function StepTwoContentToggleMonthlyYearly() {
         Monthly
       </span>
       <button
+        type="button"
         onClick={() => {
           handleSetPlanType();
         }}

@@ -8,6 +8,7 @@ export function StepTwoPlanArcade() {
   const { client, setClient } = useContext(ClientContext);
   return (
     <button
+      type="button"
       onClick={() => {
         setClient({
           ...client,

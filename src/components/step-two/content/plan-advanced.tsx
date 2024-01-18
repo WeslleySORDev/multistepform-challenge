@@ -7,6 +7,7 @@ export function StepTwoPlanAdvanced() {
   const { client, setClient } = useContext(ClientContext);
   return (
     <button
+      type="button"
       onClick={() => {
         setClient({
           ...client,

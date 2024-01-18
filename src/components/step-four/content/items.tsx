@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import ClientContext from "../../../context/client";
-import StepContext from "../../../context/step";
 import { plans } from "../../../variables/Plan";
+import StepContext from "../../../context/step";
 
 export function StepFourContentItems() {
   const { client } = useContext(ClientContext);
-  const { setStep } = useContext(StepContext);
+  const { setCurrentStep } = useContext(StepContext);
   return (
     <div className="flex flex-col gap-2 bg-neutral-Magnolia px-4 py-5">
       <div className="flex items-center">
@@ -14,7 +14,8 @@ export function StepFourContentItems() {
             {client.plan.name} ({client.planType === 0 ? "Monthly" : "Yearly"})
           </span>
           <button
-            onClick={() => setStep(2)}
+            type="button"
+            onClick={() => setCurrentStep(2)}
             className="w-fit text-sm text-neutral-CoolGray underline hover:text-primary-PurplishBlue"
           >
             Change

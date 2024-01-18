@@ -2,12 +2,13 @@ import bgSidebarMobile from "/assets/images/bg-sidebar-mobile.svg";
 import bgSidebarDesktop from "/assets/images/bg-sidebar-desktop.svg";
 
 import { useWindowSize } from "../hooks/useWindowSize";
-import { useContext } from "react";
-import StepContext from "../context/step";
 
-export function NavBar() {
+type NavBarProps = {
+  currentStep: number;
+};
+
+export function NavBar({ currentStep }: NavBarProps) {
   const { width } = useWindowSize();
-  const { step } = useContext(StepContext);
   return (
     <nav className="relative w-full lg:h-[calc(100vh-1rem)] lg:w-auto">
       {width && width >= 1024 ? (
@@ -21,7 +22,7 @@ export function NavBar() {
         >
           <span
             className={`flex h-8 w-8 items-center justify-center rounded-full ${
-              step === 1
+              currentStep === 0
                 ? "bg-primary-LightBlue"
                 : "border border-neutral-Alabaster text-neutral-Alabaster"
             } font-medium`}
@@ -40,7 +41,7 @@ export function NavBar() {
         >
           <span
             className={`flex h-8 w-8 items-center justify-center rounded-full ${
-              step === 2
+              currentStep === 1
                 ? "bg-primary-LightBlue"
                 : "border border-neutral-Alabaster text-neutral-Alabaster"
             } font-medium`}
@@ -59,7 +60,7 @@ export function NavBar() {
         >
           <span
             className={`flex h-8 w-8 items-center justify-center rounded-full ${
-              step === 3
+              currentStep === 2
                 ? "bg-primary-LightBlue"
                 : "border border-neutral-Alabaster text-neutral-Alabaster"
             } font-medium`}
@@ -78,7 +79,7 @@ export function NavBar() {
         >
           <span
             className={`flex h-8 w-8 items-center justify-center rounded-full ${
-              step === 4
+              currentStep === 3
                 ? "bg-primary-LightBlue"
                 : "border border-neutral-Alabaster text-neutral-Alabaster"
             } font-medium`}

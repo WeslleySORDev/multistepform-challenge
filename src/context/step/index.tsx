@@ -1,8 +1,13 @@
 import { createContext, useState } from "react";
 
 type PropsStepContext = {
-  step: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
+  currentStep: number;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+  next: () => void;
+  back: () => void;
+  isFirstStep: boolean;
+  isLastStep: boolean;
+  isFinished: boolean;
 };
 
 type StepContextProviderProps = {
@@ -10,19 +15,41 @@ type StepContextProviderProps = {
 };
 
 const DEFAULT_VALUE = {
-  step: 1,
-  setStep: () => {},
+  currentStep: 0,
+  setCurrentStep: () => {},
+  next: () => {},
+  back: () => {},
+  isFirstStep: false,
+  isLastStep: false,
+  isFinished: false,
 };
 
 const StepContext = createContext<PropsStepContext>(DEFAULT_VALUE);
 
 function StepContextProvider({ children }: StepContextProviderProps) {
-  const [step, setStep] = useState(DEFAULT_VALUE.step);
+  const [currentStep, setCurrentStep] = useState(DEFAULT_VALUE.currentStep);
+
+  const next = () => {
+    setCurrentStep((previousStep) => {
+      return previousStep + 1;
+    });
+  };
+  const back = () => {
+    setCurrentStep((previousStep) => {
+      return previousStep - 1;
+    });
+  };
+
   return (
     <StepContext.Provider
       value={{
-        step,
-        setStep,
+        currentStep,
+        setCurrentStep,
+        back,
+        next,
+        isFirstStep: currentStep === 0,
+        isLastStep: currentStep === 3,
+        isFinished: currentStep === 4,
       }}
     >
       {children}
