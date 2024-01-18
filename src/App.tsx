@@ -18,7 +18,6 @@ function App() {
 
   const { width } = useWindowSize();
 
-  const [thankYou, setThankYou] = useState(false);
   const [missingValue, setMissingValue] = useState(false);
 
   const handleToNextStep = () => {
@@ -29,18 +28,15 @@ function App() {
     ) {
       return setMissingValue(true);
     }
-    if (step < 4) return setStep(step + 1);
+    return setStep(step + 1);
   };
   const handleToPreviousStep = () => {
     if (step > 1) return setStep(step - 1);
   };
 
-  const handleThankYou = () => {
-    setThankYou(!thankYou);
-  };
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [step, thankYou]);
+  }, [step]);
   return (
     <div className="flex h-full flex-col lg:flex-row lg:p-2">
       <nav className="relative w-full lg:h-[calc(100vh-1rem)] lg:w-auto">
@@ -130,21 +126,22 @@ function App() {
       </nav>
       <div className="flex flex-col lg:max-h-[calc(100vh-1rem)] lg:flex-1 lg:overflow-y-auto">
         <main className="mx-4 mb-[2.25rem] flex -translate-y-[4.5rem] flex-col rounded-md bg-neutral-White px-6 py-9 lg:mx-0 lg:mb-0 lg:h-full lg:-translate-y-0 lg:rounded-none lg:px-20 lg:py-0 lg:pt-16">
-          {step === 1 && !thankYou ? (
+          {step === 1 ? (
             <StepOne
               missingValue={missingValue}
               setMissingValue={setMissingValue}
             />
-          ) : step === 2 && !thankYou ? (
+          ) : step === 2 ? (
             <StepTwo />
-          ) : step === 3 && !thankYou ? (
+          ) : step === 3 ? (
             <StepThree />
-          ) : step === 4 && !thankYou ? (
+          ) : step === 4 ? (
             <StepFour />
-          ) : null}
-          {thankYou ? <ThankYou /> : null}
+          ) : (
+            <ThankYou />
+          )}
         </main>
-        {!thankYou ? (
+        {step <= 4 ? (
           <footer className="fixed bottom-0 flex w-full justify-between bg-neutral-White p-4 lg:sticky lg:h-full lg:items-end lg:px-20">
             {step > 1 ? (
               <button
@@ -155,10 +152,7 @@ function App() {
               </button>
             ) : null}
             <button
-              onClick={() => {
-                if (step < 4) return handleToNextStep();
-                handleThankYou();
-              }}
+              onClick={() => step <= 4 && handleToNextStep()}
               className={`lg:h-fit ${
                 step < 4
                   ? "bg-primary-MarineBlue font-bold"
