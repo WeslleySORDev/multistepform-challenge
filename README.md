@@ -66,5 +66,7 @@ Users should be able to:
 # Mudanças
 
 - [x] Componentizar todas as partes do form para melhor entendimento e facil futura manutenção.
+- [x] Criação de contextos para evitar prop drilling.
+- [ ] Aplicar os contextos nos componentes que eles são necessários.
 - [ ] Utilizar react hook form para tornar os formulários mais eficientes e reduz o número de novas renderizações e melhorar
       a questão de criação e validação dos formulários

@@ -134,7 +134,7 @@ function App() {
               setMissingValue={setMissingValue}
             />
           ) : step === 2 && !thankYou ? (
-            <StepTwo client={client} setClient={setClient} />
+            <StepTwo />
           ) : step === 3 && !thankYou ? (
             <StepThree client={client} setClient={setClient} />
           ) : step === 4 && !thankYou ? (

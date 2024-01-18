@@ -1,14 +1,14 @@
-import { Client } from "../../../types/Client";
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
 
-type StepTwoContentToggleMonthlyYearlyProps = {
-  client: Client;
-  handleSetPlanType: () => void;
-};
-
-export function StepTwoContentToggleMonthlyYearly({
-  client,
-  handleSetPlanType,
-}: StepTwoContentToggleMonthlyYearlyProps) {
+export function StepTwoContentToggleMonthlyYearly() {
+  const { client, setClient } = useContext(ClientContext);
+  const handleSetPlanType = () => {
+    if (client.planType === 0) {
+      return setClient({ ...client, planType: 1 });
+    }
+    return setClient({ ...client, planType: 0 });
+  };
   return (
     <div className="flex items-center justify-center gap-3 bg-neutral-Alabaster py-4">
       <span

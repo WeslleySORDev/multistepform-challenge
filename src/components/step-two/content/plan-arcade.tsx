@@ -1,16 +1,11 @@
 import IconArcade from "/assets/images/icon-arcade.svg";
 import { plans } from "../../../variables/Plan";
-import { Client } from "../../../types/Client";
 
-type StepTwoPlanArcadeProps = {
-  client: Client;
-  setClient: React.Dispatch<React.SetStateAction<Client>>;
-};
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
 
-export function StepTwoPlanArcade({
-  client,
-  setClient,
-}: StepTwoPlanArcadeProps) {
+export function StepTwoPlanArcade() {
+  const { client, setClient } = useContext(ClientContext);
   return (
     <button
       onClick={() => {

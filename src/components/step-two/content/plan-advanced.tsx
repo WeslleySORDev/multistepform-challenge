@@ -1,16 +1,10 @@
 import IconAdvanced from "/assets/images/icon-advanced.svg";
 import { plans } from "../../../variables/Plan";
-import { Client } from "../../../types/Client";
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
 
-type StepTwoPlanAdvancedProps = {
-  client: Client;
-  setClient: React.Dispatch<React.SetStateAction<Client>>;
-};
-
-export function StepTwoPlanAdvanced({
-  client,
-  setClient,
-}: StepTwoPlanAdvancedProps) {
+export function StepTwoPlanAdvanced() {
+  const { client, setClient } = useContext(ClientContext);
   return (
     <button
       onClick={() => {

@@ -1,13 +1,10 @@
 import IconPro from "/assets/images/icon-pro.svg";
 import { plans } from "../../../variables/Plan";
-import { Client } from "../../../types/Client";
+import { useContext } from "react";
+import ClientContext from "../../../context/client";
 
-type StepTwoPlanProProps = {
-  client: Client;
-  setClient: React.Dispatch<React.SetStateAction<Client>>;
-};
-
-export function StepTwoPlanPro({ client, setClient }: StepTwoPlanProProps) {
+export function StepTwoPlanPro() {
+  const { client, setClient } = useContext(ClientContext);
   return (
     <button
       onClick={() => {
