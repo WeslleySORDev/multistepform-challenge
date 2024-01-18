@@ -67,6 +67,7 @@ Users should be able to:
 
 - [x] Componentizar todas as partes do form para melhor entendimento e facil futura manutenção.
 - [x] Criação de contextos para evitar prop drilling.
-- [ ] Aplicar os contextos nos componentes que eles são necessários.
+- [x] Aplicar os contextos nos componentes que eles são necessários.
+- [x] Encapsular todos os steps em um único form (não foi feito antes pois meu intuito era deixar o site funcional apenas).
 - [ ] Utilizar react hook form para tornar os formulários mais eficientes e reduz o número de novas renderizações e melhorar
       a questão de criação e validação dos formulários
