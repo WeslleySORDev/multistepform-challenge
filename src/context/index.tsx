@@ -2,6 +2,7 @@ import React from "react";
 
 import { ClientContextProvider } from "./client";
 import { StepContextProvider } from "./step";
+import { FormContextProvider } from "./form";
 
 type GlobalContextProps = {
   children: React.ReactNode;
@@ -9,9 +10,11 @@ type GlobalContextProps = {
 
 function GlobalContext({ children }: GlobalContextProps) {
   return (
-    <ClientContextProvider>
-      <StepContextProvider>{children}</StepContextProvider>
-    </ClientContextProvider>
+    <StepContextProvider>
+      <ClientContextProvider>
+        <FormContextProvider>{children}</FormContextProvider>
+      </ClientContextProvider>
+    </StepContextProvider>
   );
 }
 
